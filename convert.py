@@ -29,7 +29,7 @@ def read_daily_ascii_file(input_filepath):
 
     for date, str_data in data.items():
         # TODO: determine correct dtype
-        yield date, np.array(str_data, dtype=float)
+        yield date, np.array(str_data, dtype=np.float64)
 
 
 if __name__ == '__main__':
