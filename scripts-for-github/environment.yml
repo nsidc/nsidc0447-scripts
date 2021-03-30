@@ -1,0 +1,8 @@
+name: cmc_nsidc0447
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7*
+  - numpy
+  - matplotlib
