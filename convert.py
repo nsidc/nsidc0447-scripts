@@ -97,7 +97,7 @@ def crosscheck_existing():
         old_data = old_ds.read(band_idx)
         print(f'checking {band_idx}')
         if not np.all(new_data == old_data):
-            breakpoint()
+            raise RuntimeError(f'Newly created GeoTiff does not match regression for band {band_idx}')
     print('Done!')
 
 
