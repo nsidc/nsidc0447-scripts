@@ -21,10 +21,10 @@ COMPRESSION = rio.enums.Compression.deflate.name
 
 
 def read_daily_ascii_file(input_filepath):
-    """Read the given daily ascii file and return a generator over (date, data).
+    """Read the given daily ascii file and return the data.
 
-    `date` is a datetime date object.
-    `data` is a numpy array.
+    Returns a dict where keys are dt.date objects and values are 2D numpy
+    arrays representing the data read from the given `input_filepath`.
     """
     str_datas = defaultdict(list)
     with open(input_filepath, 'r') as f:
