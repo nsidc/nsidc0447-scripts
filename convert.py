@@ -25,7 +25,6 @@ def read_daily_ascii_file(input_filepath):
 
     `date` is a datetime date object.
     `data` is a numpy array.
-
     """
     str_datas = defaultdict(list)
     with open(input_filepath, 'r') as f:
@@ -45,6 +44,15 @@ def read_daily_ascii_file(input_filepath):
 
 
 def make_geotiff(input_ascii_fp, output_geotiff_fp):
+    """Create a GeoTiff version of the given cmc sdepth daily text file.
+
+    Args:
+    * input_ascii_fp - full path to input sdepth text file. E.g.,
+                       `cmc_sdepth_dly_2001_v01.2.tif`
+
+    * output_geotiff_fp - full path to the output GeoTiff this function will
+                          create.
+    """
     data = read_daily_ascii_file(input_ascii_fp)
     nbands = len(data.keys())
 
@@ -70,6 +78,11 @@ def make_geotiff(input_ascii_fp, output_geotiff_fp):
 
 
 def convert_2020():
+    """Convert the `cmc_daily_analysis_2020.txt` data to GeoTiff.
+
+    This was meant as a one-off test, so be careful running it. It probably
+    needs to be edited.
+    """
     input_fp = 'localdata/NSIDC-0447-2020/cmc_daily_analysis_2020.txt'
     output_dir = Path('localdata/convert_outputs_2021/Snow_Depth/Snow_Depth_Daily_Values/GeoTIFF/')
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -81,6 +94,16 @@ def convert_2020():
 
 
 def crosscheck_existing():
+    """Simple regression test to ensure this code produces outputs consistent
+    with GeoTiffs already in production.
+
+    This function assumes a local `localdata/` directory containing
+    nsidc0447_CMC_snow_depth_v01 data, and an unzipped version of the
+    `cmc_sdepth_dly_2001_v01.2.txt` file.
+
+    This was meant as a one-off test, so be careful running it. It probably
+    needs to be edited.
+    """
     input_fp = 'localdata/test/cmc_sdepth_dly_2001_v01.2.txt'
     output_dir = Path('localdata/test/cmc_sdepth_dly_2001_v01.2.tif')
     output_dir.mkdir(parents=True, exist_ok=True)
