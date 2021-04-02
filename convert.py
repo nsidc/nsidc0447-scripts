@@ -1,5 +1,6 @@
 import datetime as dt
 from collections import defaultdict
+from pathlib import Path
 import re
 
 import numpy as np
@@ -16,6 +17,7 @@ PROJ_WKT = 'PROJCS["unnamed",GEOGCS["unnamed ellipse",DATUM["unknown",SPHEROID["
 DATASET_TRANSFORM = Affine(23812.498583569406, 0.0, -8405812.0, 0.0, -23812.498583569406, 8405812.0)
 DATA_DTYPE = np.float64
 NODATA = -1.7e+308
+COMPRESSION = rio.enums.Compression.deflate.name
 
 
 def read_daily_ascii_file(input_filepath):
@@ -47,21 +49,24 @@ def make_geotiff(input_ascii_fp, output_geotiff_fp):
     nbands = len(data.keys())
 
     crs = rio.crs.CRS().from_wkt(PROJ_WKT)
-    with rio.open(output_geotiff_fp, 'w',
-            driver='GTiff',
-            count=nbands,
-            height=706,
-            width=706,
-            dtype=DATA_DTYPE,
-            crs=crs,
-            transform=DATASET_TRANSFORM,
-            nodata=NODATA) as out_ds:
+    with rio.open(
+        output_geotiff_fp, 'w',
+        driver='GTiff',
+        count=nbands,
+        height=706,
+        width=706,
+        dtype=DATA_DTYPE,
+        crs=crs,
+        transform=DATASET_TRANSFORM,
+        nodata=NODATA,
+        compress=COMPRESSION
+    ) as out_ds:
         for idx, (date, np_array) in enumerate(data.items(), start=1):
             print(f'Writing {date} to band {idx}')
             out_ds.write(np_array, idx)
 
     # Generate statistics
-    gdal.Info(output_geotiff_fp, stats=True)
+    gdal.Info(str(output_geotiff_fp), stats=True)
 
 
 if __name__ == '__main__':
