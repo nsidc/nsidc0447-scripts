@@ -46,6 +46,18 @@ Reads in the monthly average swe for a user specified year and month and produce
 
 The scripts require the numpy and matplotlib libraries. 
 
+To install them with [conda](https://docs.conda.io/en/latest/):
+
+```
+conda env create -f environment.yml
+```
+
+Then, activate the environment:
+
+```
+conda activate cmc_nsidc0447
+```
+
 #### Example usage:
 
 For the read_all_cmc_daily_sdepth.py

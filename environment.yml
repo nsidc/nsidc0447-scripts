@@ -4,7 +4,7 @@ channels:
   - defaults
 dependencies:
   - python=3.9*
-  - numpy
-  - matplotlib
-  - rasterio
-  - gdal
+  - numpy >=1.20.0,<2.0.0a
+  - matplotlib >=3.3.0,<4.0.0a
+  - rasterio >=1.2.1,<2.0.0a
+  - gdal >=3.1.0,<4.0.0a
