@@ -21,6 +21,10 @@ contact nsidc@nsidc.org for more information.
 
 # Scripts
 
+## convert.py
+
+Script/functions for converting snow depth text file for one year into a GeoTiff.
+
 ## read_all_cmc_daily_sdepth.py
 
 Reads in the daily snow depth file for one year e.g. 'cmc_sdepth_dly_2019_v01.2.txt' and successively plots an array for each day 
