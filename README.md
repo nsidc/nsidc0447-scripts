@@ -44,9 +44,10 @@ Reads in the monthly average swe for a user specified year and month and produce
 
 ### Setup
 
-The scripts require the numpy and matplotlib libraries. 
+The scripts require the dependencies listed in the `environment.yml` file at the
+root of this project.
 
-To install them with [conda](https://docs.conda.io/en/latest/):
+To install the dependencies with [conda](https://docs.conda.io/en/latest/):
 
 ```
 conda env create -f environment.yml
