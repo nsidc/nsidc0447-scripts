@@ -76,3 +76,15 @@ $ python read_one_day_cmc_sdepth.py
 ```
 This will produce a quick plot the snow depth for the 5th Jan 2019. 
 
+## License
+
+See [LICENSE](LICENSE.md).
+
+## Code of Conduct
+
+See [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Credit
+
+This software was developed by the National Snow and Ice Data Center with
+funding from multiple sources.
