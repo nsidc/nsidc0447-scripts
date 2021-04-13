@@ -74,22 +74,21 @@ def make_geotiff(input_ascii_fp, output_geotiff_fp):
             out_ds.write(np_array, idx)
 
     # Generate statistics
+    print('Generating statistics')
     gdal.Info(str(output_geotiff_fp), stats=True)
+    print('Done generating statistics.')
 
 
-def convert_2020():
+def convert_cmc_daily_analysis_txt_to_geotiff(input_fp, output_fp):
     """Convert the `cmc_daily_analysis_2020.txt` data to GeoTiff.
 
     This was meant as a one-off test, so be careful running it. It probably
     needs to be edited.
     """
-    input_fp = 'localdata/NSIDC-0447-2020/cmc_daily_analysis_2020.txt'
-    output_dir = Path('localdata/convert_outputs_2021/Snow_Depth/Snow_Depth_Daily_Values/GeoTIFF/')
-    output_dir.mkdir(parents=True, exist_ok=True)
+    Path(output_fp).parent.mkdir(parents=True, exist_ok=True)
 
     # Make the output filename consistent with the existing filenaming
     # structure.
-    output_fp = output_dir / 'cmc_sdepth_dly_2020_v01.2.tif'
     make_geotiff(input_fp, output_fp)
 
 
@@ -125,5 +124,7 @@ def crosscheck_existing():
 
 
 if __name__ == '__main__':
-    convert_2020()
+    input_fp = 'localdata/NSIDC-0447-2020/cmc_daily_analysis_2020.txt'
+    output_fp = 'localdata/convert_outputs_2021/Snow_Depth/Snow_Depth_Daily_Values/GeoTIFF/cmc_sdepth_dly_2020_v01.2.tif'
+    convert_cmc_daily_analysis_txt_to_geotiff(input_fp, output_fp)
     # crosscheck_existing()
