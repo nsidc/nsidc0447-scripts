@@ -74,7 +74,7 @@ def make_geotiff(input_ascii_fp, output_geotiff_fp):
             out_ds.write(np_array, idx)
 
     # Generate statistics
-    print('Generating statistics')
+    print('Generating statistics (this could take a while...)')
     gdal.Info(str(output_geotiff_fp), stats=True)
     print('Done generating statistics.')
 
