@@ -124,12 +124,3 @@ def crosscheck_existing():
         if not np.all(new_data == old_data):
             raise RuntimeError(f'Newly created GeoTiff does not match regression for band {band_idx}')
     print('Done!')
-
-
-if __name__ == '__main__':
-    # input_fp = 'localdata/NSIDC-0447-2020/cmc_daily_analysis_2020.txt'
-    # output_fp = 'localdata/convert_outputs_2021/Snow_Depth/Snow_Depth_Daily_Values/GeoTIFF/cmc_sdepth_dly_2020_v01.2.tif'
-    input_fp = 'localdata/cmc_sdepth_dly_2019_v01.2.txt'
-    output_fp = 'localdata/convert_outputs_2021/Snow_Depth/Snow_Depth_Daily_Values/GeoTIFF/cmc_sdepth_dly_2019_v01.3.tif'
-    convert_cmc_daily_analysis_txt_to_geotiff(input_fp, output_fp)
-    # crosscheck_existing()
