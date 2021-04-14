@@ -79,17 +79,20 @@ def make_geotiff(input_ascii_fp, output_geotiff_fp):
     print('Done generating statistics.')
 
 
-def convert_cmc_daily_analysis_txt_to_geotiff(input_fp, output_fp):
-    """Convert the `cmc_daily_analysis_2020.txt` data to GeoTiff.
+def convert_cmc_daily_analysis_txt_to_geotiff(input_ascii_fp, output_geotiff_fp):
+    """Convert the cmc daily analysis txt file given by `input_fp` to a geotiff.
+    Args:
+    * input_ascii_fp - full path to input sdepth text file. E.g.,
+                       `cmc_sdepth_dly_2001_v01.2.tif`
 
-    This was meant as a one-off test, so be careful running it. It probably
-    needs to be edited.
+    * output_geotiff_fp - full path to the output GeoTiff this function will
+                          create.
     """
-    Path(output_fp).parent.mkdir(parents=True, exist_ok=True)
+    Path(output_geotiff_fp).parent.mkdir(parents=True, exist_ok=True)
 
     # Make the output filename consistent with the existing filenaming
     # structure.
-    make_geotiff(input_fp, output_fp)
+    make_geotiff(input_ascii_fp, output_geotiff_fp)
 
 
 def crosscheck_existing():
